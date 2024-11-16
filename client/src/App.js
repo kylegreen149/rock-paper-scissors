@@ -1,7 +1,16 @@
+import {useState, useEffect} from "react"
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [players, setPlayers] = useState([])
+  console.log(players)
+
+  useEffect(() => {
+    fetch("/players")
+    .then(response => response.json())
+    .then(playersData => setPlayers(playersData))
+  },[])
   return (
     <div className="App">
       <header className="App-header">
